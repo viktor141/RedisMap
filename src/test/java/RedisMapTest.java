@@ -56,7 +56,7 @@ public class RedisMapTest {
         map.put("key1", "value1");
         assertTrue(map.containsKey("key1"));
         assertFalse(map.containsKey("key2"));
-        assertFalse(map.containsKey(null));
+        assertThrows(NullPointerException.class, () -> map.containsKey(null));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class RedisMapTest {
         map.put("key1", "value1");
         assertTrue(map.containsValue("value1"));
         assertFalse(map.containsValue("value2"));
-        assertFalse(map.containsValue(null));
+        assertThrows(NullPointerException.class, () -> map.containsValue(null));
     }
 
     @Test
@@ -126,6 +126,5 @@ public class RedisMapTest {
         assertTrue(entries.contains(new AbstractMap.SimpleEntry<>("key1", "value1")));
         assertTrue(entries.contains(new AbstractMap.SimpleEntry<>("key2", "value2")));
     }
-
 
 }
